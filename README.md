@@ -24,7 +24,7 @@ cd /opt && sudo rm main.zip && sudo rm -rf what_is_Kernel-main && sudo rm /usr/b
 
 
 
-##TODO
+## TODO
 
 - [ ] write script for easy Install 
 - [ ] add comment to project  
