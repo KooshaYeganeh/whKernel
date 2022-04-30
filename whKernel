@@ -1,0 +1,552 @@
+#!/usr/bin/bash
+
+
+red=$'\e[1;31m'
+green=$'\e[1;32m'
+blue=$'\e[1;34m'
+orange=$'\e[1;33m'
+
+printf "Enter Kernel Parameter name:"
+
+read parameter
+
+
+
+
+# Shared Memory
+
+if [ "$parameter" == sem ];then
+	echo "sem = > Semaphore values:is yet another mechanism for support of thread or process synchronization."
+	printf "Do you want to change value of sem paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/sem | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.sem=$value
+			echo "$green Kernel.sem paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+else
+	echo "$orange Can't Detect Parameter with This name in Shared-Memory"
+
+fi
+
+
+
+if [ "$parameter" == msgmnb ];then
+	echo "msgmnb = > Maximum message queue in bytes"
+	printf "Do you want to change value of sem paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/sem | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.msgmnb=$value
+			echo "$green Kernel.sem paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+else
+	echo "$orange Can't Detect Parameter with This name in Shared-Memory"
+
+fi
+
+
+
+
+
+
+
+if [ "$parameter" == msgmni ];then
+	echo "msgmni = > Maximum allowed message queue identifiers"
+	printf "Do you want to change value of msgmni paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/msgmni | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.msgmni=$value
+			echo "$green Kernel.msgmni paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+else
+	echo "$orange Can't Detect Parameter with This name Shared-Memory"
+
+fi
+
+
+
+if [ "$parameter" == msgmax ];then
+	echo "msgmax = > Maximum message size in bytes"
+	printf "Do you want to change value of msgmax paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/msgmax | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.msgmax=$value
+			echo "$green Kernel.msgmax paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+else
+	echo "$orange Can't Detect Parameter with This name Shared-Memory"
+
+fi
+
+
+
+if [ "$parameter" == shmmni ];then
+	echo "shmmni = > Number of shared segments system-wide"
+	printf "Do you want to change value of shmmni paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/shmmni | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.shmmni=$value
+			echo "$green Kernel.shmmni paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+else
+	echo "$orange Can't Detect Parameter with This name Shared-Memory"
+
+fi
+
+
+
+
+if [ "$parameter" == shmall ];then
+	echo "shmall = > Shared memory system-wide in pages"
+	printf "Do you want to change value of shmall paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/shmall | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.shmall=$value
+			echo "$green Kernel.shmall paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+else
+	echo "$orange Can't Detect Parameter with This name Shared-Memory"
+
+fi
+
+
+
+if [ "$parameter" == shmmax ];then
+	echo "shmmax = > Shared segment size in bytes"
+	printf "Do you want to change value of shmmax paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/shmmax | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.shmmax=$value
+			echo "$green Kernel.shmmax paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+else
+	echo "$orange Can't Detect Parameter with This name Shared-Memory"
+
+fi
+
+
+
+# Processes
+
+
+if [ "$parameter" == threads-max ];then
+	echo "threads-max = > Maximum threads allowed in the system"
+	printf "Do you want to change value of threads-max paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/threads-max | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.threads-max=$value
+			echo "$green Kernel.threads-max paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+else
+	echo "$orange Can't Detect Parameter with This name in Processes"
+
+fi
+
+
+# Signals
+
+
+if [ "$parameter" == rtsig-max ];then
+	echo "rtsig-max = > Maximum real-time signals"
+	printf "Do you want to change value of rtsig-max paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/rtsig-max | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.rtsig-max=$value
+			echo "$green Kernel.rtsig-max paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in Signals"
+fi
+
+if [ "$parameter" == rtsig-nr ];then
+	echo "rtsig-nr = > Number of currently queued real-time signals"
+	printf "Do you want to change value of rtsig-nr paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/rtsig-nr | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.rtsig-nr=$value
+			echo "$green Kernel.rtsig-nr paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in Signals"
+fi
+
+
+
+
+
+# Profiling/Debugging
+
+if [ "$parameter" == sysrq ];then
+	echo "sysrq = > System trace request"
+	printf "Do you want to change value of sysrq paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/sysrq | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.sysrq=$value
+			echo "$green Kernel.sysrq paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in Profiling/Debugging"
+fi
+
+if [ "$parameter" == printk ];then
+	echo "printk = > Printk values"
+	printf "Do you want to change value of printk paramater?(y/n)"
+	printf "For More Info(i)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/printk`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.printk=$value
+			echo "$green Kernel.printk paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	elif [ "$response" == i ];then
+		echo "printk parameter has four fields: console_loglevel, default_message_ loglevel,
+		minimum_console_level, and default_console_level. Messages with a higher priority than
+		console_loglevel are printed to the console. Messages without an explicit priority are
+		printed with default_message_loglevel priority. The minimum (highest) value to which
+		console_loglevel can be set is determined by the minimum_console_level parameter. The
+		default_console_loglevel is the default value for console_loglevel."
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in Profiling/Debugging"
+fi
+
+
+
+
+
+# System
+
+
+
+if [ "$parameter" == domainname ];then
+	echo "domainname = > Domain name"
+	printf "Do you want to change value of domainname paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/domainname`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.domainname=$value
+			echo "$green Kernel.domainname paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in System"
+fi
+
+
+
+
+
+if [ "$parameter" == hostname ];then
+	echo "hostname => Host name"
+	printf "Do you want to change value of hostname paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/hostname`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.hostname=$value
+			echo "$green Kernel.hostname paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in System"
+fi
+
+
+
+
+
+if [ "$parameter" == ostype ];then
+	echo "ostype = > Operating system type"
+	printf "Do you want to change value of ostype paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/ostype`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.ostype=$value
+			echo "$green Kernel.ostype paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in System"
+fi
+
+
+
+
+
+
+
+
+if [ "$parameter" == osrelease ];then
+	echo "osrelease = > Operating system release"
+	printf "Do you want to change value of osrelease paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/osrelease`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.osrelease=$value
+			echo "$green Kernel.osrelease paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in System"
+fi
+
+
+
+
+if [ "$parameter" == real-root-dev ];then
+	echo "real-root-dev = > Real root device partition"
+	printf "Do you want to change value of real-root-dev paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/real-root-dev`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.real-root-dev=$value
+			echo "$green Kernel.real-root-dev paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in System"
+fi
+
+if [ "$parameter" == version ];then
+	echo "version = > Kernel version"
+	printf "Do you want to change value of version paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/version`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.version=$value
+			echo "$green Kernel.version paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+else
+	echo "$orange Can't Detect Parameter with This name in System"
+fi
+
+
