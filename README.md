@@ -20,3 +20,12 @@ $ cd /opt && wget https://github.com/kooshakoosha/what_is_Kernel/archive/refs/he
 # Uninstall 
 
 cd /opt && sudo rm main.zip && sudo rm -rf what_is_Kernel-main && sudo rm /usr/bin/whKernel
+
+
+
+
+##TODO
+
+[] write script for easy Install
+[] add comment to project
+[] add more info for important parameters
