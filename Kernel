@@ -1,0 +1,197 @@
+#!/usr/bin/bash
+
+
+red=$'\e[1;31m'
+green=$'\e[1;32m'
+blue=$'\e[1;34m'
+orange=$'\e[1;33m'
+
+printf "Enter Kernel Parameter name:"
+
+read parameter
+
+
+
+
+# Shared Memory
+
+if [ "$parameter" == sem ];then
+	echo "sem = > Semaphore values:is yet another mechanism for support of thread or process synchronization."
+	printf "Do you want to chnage value of sem paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/sem | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.sem=$value
+			echo "$green Kernel.sem paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == msgmnb ];then
+	echo "msgmnb = > Maximum message queue in bytes"
+	printf "Do you want to chnage value of sem paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/sem | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.msgmnb=$value
+			echo "$green Kernel.sem paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+
+
+
+if [ "$parameter" == msgmni ];then
+	echo "msgmni = > Maximum allowed message queue identifiers"
+	printf "Do you want to chnage value of msgmni paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/msgmni | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.msgmni=$value
+			echo "$green Kernel.msgmni paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == msgmax ];then
+	echo "msgmax = > Maximum message size in bytes"
+	printf "Do you want to chnage value of msgmax paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/msgmax | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.msgmax=$value
+			echo "$green Kernel.msgmax paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == shmmni ];then
+	echo "shmmni = > Number of shared segments system-wide"
+	printf "Do you want to chnage value of shmmni paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/shmmni | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.shmmni=$value
+			echo "$green Kernel.shmmni paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == shmall ];then
+	echo "shmall = > Shared memory system-wide in pages"
+	printf "Do you want to chnage value of shmall paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/shmall | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.shmall=$value
+			echo "$green Kernel.shmall paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == shmmax ];then
+	echo "shmmax = > Shared segment size in bytes"
+	printf "Do you want to chnage value of shmmax paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/kernel/shmmax | awk '{print $1}'`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w kernel.shmmax=$value
+			echo "$green Kernel.shmmax paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
