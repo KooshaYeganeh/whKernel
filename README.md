@@ -11,9 +11,10 @@ with this script:
 
 # Install 
 
-copy this command 
+just Run install
 
-$ cd /opt && wget https://github.com/kooshakoosha/what_is_Kernel/archive/refs/heads/main.zip && unzip main.zip && cd what_is_Kernel-main && sudo cp whKernel /usr/bin
+$ ./install
+
 
 
 
@@ -26,6 +27,6 @@ cd /opt && sudo rm main.zip && sudo rm -rf what_is_Kernel-main && sudo rm /usr/b
 
 ## TODO
 
-- [ ] write script for easy Install 
+- [*] write script for easy Install 
 - [ ] add comment to project  
-- [ ] add more info for important parameters 
+- [ ] add more info for important parameters
