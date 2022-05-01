@@ -36,9 +36,6 @@ if [ "$parameter" == sem ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-else
-	echo "$orange Can't Detect Parameter with This name in Shared-Memory"
-
 fi
 
 
@@ -64,8 +61,6 @@ if [ "$parameter" == msgmnb ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-else
-	echo "$orange Can't Detect Parameter with This name in Shared-Memory"
 
 fi
 
@@ -96,8 +91,6 @@ if [ "$parameter" == msgmni ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-else
-	echo "$orange Can't Detect Parameter with This name Shared-Memory"
 
 fi
 
@@ -124,8 +117,6 @@ if [ "$parameter" == msgmax ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-else
-	echo "$orange Can't Detect Parameter with This name Shared-Memory"
 
 fi
 
@@ -152,8 +143,6 @@ if [ "$parameter" == shmmni ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-else
-	echo "$orange Can't Detect Parameter with This name Shared-Memory"
 
 fi
 
@@ -181,8 +170,6 @@ if [ "$parameter" == shmall ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-else
-	echo "$orange Can't Detect Parameter with This name Shared-Memory"
 
 fi
 
@@ -209,8 +196,6 @@ if [ "$parameter" == shmmax ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-else
-	echo "$orange Can't Detect Parameter with This name Shared-Memory"
 
 fi
 
@@ -240,8 +225,6 @@ if [ "$parameter" == threads-max ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-else
-	echo "$orange Can't Detect Parameter with This name in Processes"
 
 fi
 
@@ -270,9 +253,6 @@ if [ "$parameter" == rtsig-max ];then
 	else
 		echo "$red Please Enter valid Value!!!"
 	fi
-
-else
-	echo "$orange Can't Detect Parameter with This name in Signals"
 fi
 
 if [ "$parameter" == rtsig-nr ];then
@@ -297,8 +277,6 @@ if [ "$parameter" == rtsig-nr ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in Signals"
 fi
 
 
@@ -329,19 +307,16 @@ if [ "$parameter" == sysrq ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in Profiling/Debugging"
 fi
 
 if [ "$parameter" == printk ];then
-	echo "printk = > Printk values"
+	echo "printk = > Printk values [For More Info Press i ]"
 	printf "Do you want to change value of printk paramater?(y/n)"
-	printf "For More Info(i)"
 	read response
 
 	if [ "$response" == y ];then
 		current_parameter=`cat /proc/sys/kernel/printk`
-		echo "current value is $current_parameter"
+		echo "$blue current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
 		if [ "$value" ];then
@@ -353,7 +328,7 @@ if [ "$parameter" == printk ];then
 	elif [ "$response" == n ];then
 		echo "$blue You Dont want to change The value"
 	elif [ "$response" == i ];then
-		echo "printk parameter has four fields: console_loglevel, default_message_ loglevel,
+		echo "$orange printk parameter has four fields: console_loglevel, default_message_ loglevel,
 		minimum_console_level, and default_console_level. Messages with a higher priority than
 		console_loglevel are printed to the console. Messages without an explicit priority are
 		printed with default_message_loglevel priority. The minimum (highest) value to which
@@ -363,8 +338,6 @@ if [ "$parameter" == printk ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in Profiling/Debugging"
 fi
 
 
@@ -397,8 +370,6 @@ if [ "$parameter" == domainname ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in System"
 fi
 
 
@@ -427,8 +398,6 @@ if [ "$parameter" == hostname ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in System"
 fi
 
 
@@ -457,8 +426,6 @@ if [ "$parameter" == ostype ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in System"
 fi
 
 
@@ -490,8 +457,6 @@ if [ "$parameter" == osrelease ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in System"
 fi
 
 
@@ -519,8 +484,6 @@ if [ "$parameter" == real-root-dev ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in System"
 fi
 
 if [ "$parameter" == version ];then
@@ -545,8 +508,778 @@ if [ "$parameter" == version ];then
 		echo "$red Please Enter valid Value!!!"
 	fi
 
-else
-	echo "$orange Can't Detect Parameter with This name in System"
+fi
+
+
+# Virtual Memory
+# Sysctl Prefix: vm
+# /proc Prefix: /proc/sys/vm/
+
+
+
+if [ "$parameter" == max_map_count ];then
+	echo "max_map_count = > Maximum number of memory map areas per process"
+	printf "Do you want to change value of max_map_count paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/max_map_count`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w vm.max_map_count=$value
+			echo "$green Kernel.max_map_count paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+fi
+
+
+
+if [ "$parameter" == min-readahead ];then
+	echo "min-readahead = > Maximum I/O read-ahead size"
+	printf "Do you want to change value of min-readahead paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/min-readahead`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w vm.min-readahead=$value
+			echo "$green Kernel.min-readahead paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+fi
+
+
+
+if [ "$parameter" == max-readahead ];then
+	echo "max-readahead = > Minimum I/O read-ahead size"
+	printf "Do you want to change value of max-readahead paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/max-readahead`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w vm.max-readahead=$value
+			echo "$green Kernel.max-readahead paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+
+fi
+
+if [ "$parameter" == vm.heap-stack-gap ];then
+	echo "vm.heap-stack-gap = > Enforces a gap between heap and stack [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange parameter allows a gap to be enforced between the heap and the stack.
+	       	Any access to memory in the gap area causes a segmentation fault.
+	       	This action avoids silent corruption that could occur when allocating on stack runs over
+		the heap. The gap enforced is in number of pages."""
+	else
+
+		printf "Do you want to change value of vm.heap-stack-gap paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/vm.heap-stack-gap`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.vm.heap-stack-gap=$value
+				echo "$green Kernel.vm.heap-stack-gap paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+
+
+
+if [ "$parameter" == pagetable_cache ];then
+	echo "pagetable_cache = > Cache size per processor for page tables [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange The pagetable_cache parameter specifies low and high cache size per processor to be
+		used for page tables. On SMP systems, this parameter allows the system to do fast
+		pagetable allocations without having to acquire the vm memory lock. On a
+		single-CPU system, these values can be set to 0 to avoid wasting memory."""
+	else
+
+		printf "Do you want to change value of pagetable_cache paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/pagetable_cache`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.pagetable_cache=$value
+				echo "$green Kernel.pagetable_cache paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+if [ "$parameter" == page_cluster ];then
+	echo "page_cluster = > Pages to read on a page fault [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange The page_cluster parameter is used to determine the number of pages the vm can
+		read at once on a page fault. The number of pages is 2 ^ page_cluster. This VM
+		subsystem tries to reduce excessive seeks by reading multiple pages on a page
+		fault."""
+	else
+
+		printf "Do you want to change value of page_cluster paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/page_cluster`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.page_cluster=$value
+				echo "$green Kernel.page_cluster paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+if [ "$parameter" == kswapd ];then
+	echo "kswapd = > Swaps out memory pages to disk [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange The vm swapout daemon, kswapd, swaps out pages to disk when memory gets
+		fragmented or full. This is a three-field value that corresponds to tries_base, tries_min,
+		and swap_cluster.
+		The maximum number of pages kswapd tries to free at once is determined by the
+		tries_base field. This number is divided by 4 or 8 to determine the number of pages
+		(mm/vmscan.c).
+		The tries_min field specifies the minimum number of pages kswapd tries to free each
+		time it is called.
+		The swap_cluster field is the number of pages kswapd writes in one turn. Keeping this
+		value large ensures that kswapd does its I/O in large chunks and that the disk
+	doesn't have to seek often. If it is too large, it may cause request queue flooding."""
+	
+	else
+		printf "Do you want to change value of kswapd paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/kswapd`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.kswapd=$value
+				echo "$green Kernel.kswapd paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+if [ "$parameter" == bdflush ];then
+	echo "bdflush = > Dirty page handling [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange 
+		1 - The first field, nfract, determines the percentage of dirty buffer cache to activate
+		bdflush. A higher value can delay disk writes for a longer time but will have to do alot of I/O when memory becomes short.
+	       	A lower value spreads I/O more evenly at the cost of frequent I/O operations. The default value is 50%.
+		2 - The second field, ndirty, is the maximum number of dirty blocks that bdflush can
+		write to disk at once. A higher value can delay I/O and can lead to I/O burst,
+		whereas a lower value can lead to a memory shortage as bdflush isn't awakened frequently enough.
+		3 - The third field, nrefill, is the number of buffers that to the list of free buffers when refill is called.
+		The fourth field,nref_dirt,bdflushTRies to obtain and add is the dirty buffer threshold for activating bdflush.
+		The sixth field, age_buffer, is the maximum time before writing out a dirty normal buffer to disk. The value is in jiffies.
+		The seventh field, age_super, is the maximum time before writing out a dirty super block buffer to disk."""
+	else
+
+		printf "Do you want to change value of bdflush paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/bdflush`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.bdflush=$value
+				echo "$green Kernel.bdflush paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+if [ "$parameter" == vm_passes ];then
+	echo "vm_passes = > Memory balancing [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange 
+		The vm_passes parameter is the number of vm passes before failing the memory balancing."""
+	
+	else
+		printf "Do you want to change value of vm_passes paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/vm_passes`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.vm_passes=$value
+				echo "$green Kernel.vm_passes paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+
+
+
+if [ "$parameter" == vm_mapped_ratio ];then
+	echo "vm_mapped_ratio = > Pageout rate [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange 
+		The vm_mapped_ratio parameter determines the pageout rate. A smaller value indicates
+		an early start to pageout."""
+	
+	else
+		printf "Do you want to change value of vm_mapped_ratio paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/vm_mapped_ratio`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.vm_mapped_ratio=$value
+				echo "$green Kernel.vm_mapped_ratio paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ "$parameter" == vm_lru_balance_ratio ];then
+	echo "vm_lru_balance_ratio = > Active and inactive cache ratio [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange 
+		The vm_lru_balance_ratio parameter determines the balance between active and
+		inactive cache. A bigger value means active cache grows as active cache is rotated
+		slowly."""
+	
+	else
+		printf "Do you want to change value of vm_lru_balance_ratio paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/vm_lru_balance_ratio`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.vm_lru_balance_ratio=$value
+				echo "$green Kernel.vm_lru_balance_ratio paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+
+
+
+
+if [ "$parameter" == vm_cache_scan_ratio ];then
+	echo "vm_cache_scan_ratio = > LRU queue to scan in one go [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange 
+		The vm_cache_scan_ratio parameter specifies how much of inactive LRU queue is
+		scanned in one go. A value of 6 implies that a scan of 1/6 of the inactive list is done."""
+	
+	else
+		printf "Do you want to change value of vm_cache_scan_ratio paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/vm_cache_scan_ratio`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm.vm_cache_scan_ratio=$value
+				echo "$green Kernel.vm_cache_scan_ratio paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+
+
+
+
+if [ "$parameter" == vm_vfs_scan_ratio ];then
+	echo "vm_vfs_scan_ratio = > VFS queues to scan in one go [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange 
+		The vm_vfs_scan_ratio parameter specifies how much of VFS queues is scanned in one
+		go. A value of 6 implies that 1/6 of the unused inode, dentry, and dquot caches will
+		be freed."""
+	
+	else
+		printf "Do you want to change value of vm_vfs_scan_ratio paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/vm_vfs_scan_ratio`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w vm_vfs_scan_ratio=$value
+				echo "$green Kernel.vm_vfs_scan_ratio paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+
+
+
+if [ "$parameter" == vm_gfp_debug ];then
+	echo "$vm_gfp_debug = > Enable to send debug messages to log"
+	printf "Do you want to change value of vm_gfp_debug paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/vm_gfp_debug`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w vm_gfp_debug=$value
+			echo "$green Kernel.vm_gfp_debug paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+# File system
+# Sysctl Prefix: fs
+# /proc Prefix: /proc/sys/fs/
+
+
+
+if [ "$parameter" == file-max ];then
+	echo "file-max = > Maximum number of file descriptors [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange 
+		The system file_descriptor limit is set using file-max. The descriptor limit is the
+		maximum number of file descriptors that any one process may open at once."""
+	
+	else
+		printf "Do you want to change value of file-max paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/file-max`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w fs.file-max=$value
+				echo "$green Kernel.file-max paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+if [ "$parameter" == file-nr ];then
+	echo "file-nr = > Number of file handles [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """$orange 
+		The file-nr has three fields: the number of allocated file handles, the number of used file
+		handles, and the maximum number of file handles."""
+	
+	else
+		printf "Do you want to change value of file-nr paramater?(y/n)"
+		read response
+
+		if [ "$response" == y ];then
+			current_parameter=`cat /proc/sys/vm/file-nr`
+			echo "current value is $current_parameter"
+			printf "Enter value you want:"
+			read value
+			if [ "$value" ];then
+				sudo sysctl -w fs.file-nr=$value
+				echo "$green Kernel.file-nr paramater changed [ OK ]"
+			else
+				echo "$orange Please Enter Valid Number"
+			fi
+		elif [ "$response" == n ];then
+			echo "$blue You Dont want to change The value"
+		else
+			echo "$red Please Enter valid Value!!!"
+		fi
+	fi
+fi
+
+
+if [ "$parameter" == inode-state ];then
+	echo "inode-state = > Inode status "
+	printf "Do you want to change value of inode-state paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/inode-state`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.inode-state=$value
+			echo "$green Kernel.inode-state paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == inode-nr ];then
+	echo "inode-nr = > Inode status"
+	printf "Do you want to change value of inode-nr paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/inode-nr`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.inode-nr=$value
+			echo "$green Kernel.inode-nr paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == super-max ];then
+	echo "super-max = > Maximum number of file systems [ For more Detail press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo """The super-max parameter controls the maximum number of super blocks and thus
+	        determines the maximum number of mounted file systems the kernel can have. This
+       		value needs to be increased if there is a need to mount more file systems than the
+		current value in super-max."""
+	fi
+	printf "Do you want to change value of super-max paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/super-max`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.super-max=$value
+			echo "$green Kernel.super-max paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == dentry-state ];then
+	echo "dentry-state = > Status of directory cache"
+	printf "Do you want to change value of dentry-state paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/dentry-state`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.dentry-state=$value
+			echo "$green Kernel.dentry-state paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == dquot-nr ];then
+	echo "dquot-nr = > Number of allocated and free disk quota entries"
+	printf "Do you want to change value of dquot-nr paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/dquot-nr`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.dquot-nr=$value
+			echo "$green Kernel.dquot-nr paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == dquot-max ];then
+	echo "dquot-max = > Maximum number of cached disk quota entries"
+	printf "Do you want to change value of dquot-max paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/dquot-max`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.dquot-max=$value
+			echo "$green Kernel.dquot-max paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == dir-notify-enable ];then
+	echo "dir-notify-enable = > Enables dnotify[For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange The dir-notify-enable field enables or disables the dnotify interface on a system-wide basis."
+	fi
+	printf "Do you want to change value of dir-notify-enable paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/dir-notify-enable`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.dir-notify-enable=$value
+			echo "$green Kernel.dir-notify-enable paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == aio-max-nr ];then
+	echo "aio-max-nr = > Maximum number of AIO requests[For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange The aio-max-nr field enables or disables the dnotify interface on a system-wide basis."
+	fi
+	printf "Do you want to change value of aio-max-nr paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/aio-max-nr`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.aio-max-nr=$value
+			echo "$green Kernel.aio-max-nr paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == aio-nr ];then
+	echo "aio-nr = > Number of AIO requests[For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange The aio-nr field enables or disables the dnotify interface on a system-wide basis."
+	fi
+	printf "Do you want to change value of aio-nr paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/aio-nr`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w fs.aio-nr=$value
+			echo "$green Kernel.aio-nr paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
 fi
 
 
