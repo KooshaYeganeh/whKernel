@@ -1002,7 +1002,7 @@ if [ "$parameter" == file-max ];then
 		read response
 
 		if [ "$response" == y ];then
-			current_parameter=`cat /proc/sys/vm/file-max`
+			current_parameter=`cat /proc/sys/fs/file-max`
 			echo "current value is $current_parameter"
 			printf "Enter value you want:"
 			read value
@@ -1034,7 +1034,7 @@ if [ "$parameter" == file-nr ];then
 		read response
 
 		if [ "$response" == y ];then
-			current_parameter=`cat /proc/sys/vm/file-nr`
+			current_parameter=`cat /proc/sys/fs/file-nr`
 			echo "current value is $current_parameter"
 			printf "Enter value you want:"
 			read value
@@ -1059,7 +1059,7 @@ if [ "$parameter" == inode-state ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/inode-state`
+		current_parameter=`cat /proc/sys/fs/inode-state`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1083,7 +1083,7 @@ if [ "$parameter" == inode-nr ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/inode-nr`
+		current_parameter=`cat /proc/sys/fs/inode-nr`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1113,7 +1113,7 @@ if [ "$parameter" == super-max ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/super-max`
+		current_parameter=`cat /proc/sys/fs/super-max`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1137,7 +1137,7 @@ if [ "$parameter" == dentry-state ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/dentry-state`
+		current_parameter=`cat /proc/sys/fs/dentry-state`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1161,7 +1161,7 @@ if [ "$parameter" == dquot-nr ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/dquot-nr`
+		current_parameter=`cat /proc/sys/fs/dquot-nr`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1184,7 +1184,7 @@ if [ "$parameter" == dquot-max ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/dquot-max`
+		current_parameter=`cat /proc/sys/fs/dquot-max`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1211,7 +1211,7 @@ if [ "$parameter" == dir-notify-enable ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/dir-notify-enable`
+		current_parameter=`cat /proc/sys/fs/dir-notify-enable`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1238,7 +1238,7 @@ if [ "$parameter" == aio-max-nr ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/aio-max-nr`
+		current_parameter=`cat /proc/sys/fs/aio-max-nr`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1265,13 +1265,419 @@ if [ "$parameter" == aio-nr ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/vm/aio-nr`
+		current_parameter=`cat /proc/sys/fs/aio-nr`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
 		if [ "$value" ];then
 			sudo sysctl -w fs.aio-nr=$value
 			echo "$green Kernel.aio-nr paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+## NetWork
+
+
+# Net Core
+
+# => Sysctl Prefix: net.core
+# => /proc Prefix: /proc/sys/net/core
+
+
+if [ "$parameter" == hot_list_length ];then
+	echo "hot_list_length = > Maximum number of skb-heads to be cached "
+	printf "Do you want to change value of hot_list_length paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/hot_list_length`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.hot_list_length=$value
+			echo "$green Kernel.hot_list_length paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == optmem_max ];then
+	echo "optmem_max = > Maximum ancillary buffer size per socket "
+	printf "Do you want to change value of optmem_max paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/optmem_max`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.optmem_max=$value
+			echo "$green Kernel.optmem_max paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == message_burst ];then
+	echo "message_burst = > Limits warning messages "
+	printf "Do you want to change value of message_burst paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/message_burst`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.message_burst=$value
+			echo "$green Kernel.message_burst paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == message_cost ];then
+	echo "message_cost = > Limits warning messages "
+	printf "Do you want to change value of message_cost paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/message_cost`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.message_cost=$value
+			echo "$green Kernel.message_cost paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == netdev_max_backlog ];then
+	echo "netdev_max_backlog = > Maximum number of packets queued "
+	printf "Do you want to change value of netdev_max_backlog paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/netdev_max_backlog`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.netdev_max_backlog=$value
+			echo "$green Kernel.netdev_max_backlog paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == rmem_default ];then
+	echo "rmem_default = > Socket receive buffer size "
+	printf "Do you want to change value of rmem_default paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/rmem_default`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.rmem_default=$value
+			echo "$green Kernel.rmem_default paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == wmem_default ];then
+	echo "wmem_default = > Socket Send buffer size "
+	printf "Do you want to change value of wmem_default paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/wmem_default`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.wmem_default=$value
+			echo "$green Kernel.wmem_default paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == rmem_max ];then
+	echo "rmem_max = > Maximum receive socket buffer size "
+	printf "Do you want to change value of rmem_max paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/rmem_max`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.rmem_max=$value
+			echo "$green Kernel.rmem_max paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == wmem_max ];then
+	echo "wmem_max = > Maximum Send socket buffer size "
+	printf "Do you want to change value of wmem_max paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/vm/wmem_max`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.wmem_max=$value
+			echo "$green Kernel.wmem_max paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+# ICMP
+
+# Sysctl Prefix: net.ipv4
+# /proc Prefix: /proc/sys/net/ipv4
+
+
+if [ "$parameter" == icmp_ratemask ];then
+	echo "icmp_ratemask = > Mask value for ICMP types [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange The icmp_ratemask parameter contains ICMP types for which rates are limited."
+	fi
+	printf "Do you want to change value of icmp_ratemask paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/icmp_ratemask`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.icmp_ratemask=$value
+			echo "$green net.icmp_ratemask paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == icmp_ratelimit ];then
+	echo "icmp_ratelimit = > Rate for sending ICMP Packets [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange The icmp_ratelimit parameter limits the maximum rates for sending ICMP packets
+		whose type matches the icmp_ratemask parameter to specific targets. A value of 0
+		disables any limit. The value is in jiffies."
+	fi
+	printf "Do you want to change value of icmp_ratelimit paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/icmp_ratelimit`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.icmp_ratelimit=$value
+			echo "$green net.icmp_ratelimit paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == icmp_ignore_bogus_error_responses ];then
+	echo "icmp_ratelimit => Warning messages from router [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange If icmp_ignore_bogus_error_responses is enabled, the kernel does not issue any log
+		warnings when routers send bogus responses to broadcast frames."
+	fi
+	printf "Do you want to change value of icmp_ratelimit paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/icmp_ignore_bogus_error_responses`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.icmp_ignore_bogus_error_responses=$value
+			echo "$green net.icmp_ignore_bogus_error_responses paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == icmp_echo_ignore_broadcasts ];then
+	echo "icmp_ratelimit => ICMP echo requests to broadcast addresses [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange If icmp_echo_ignore_broadcasts is enabled, the kernel ignores all the
+		ICMP echo requests sent to broadcast/multicast addresses."
+	fi
+	printf "Do you want to change value of icmp_ratelimit paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/icmp_echo_ignore_broadcasts`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.icmp_echo_ignore_broadcasts=$value
+			echo "$green net.icmp_echo_ignore_broadcasts paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == icmp_echo_ignore_all ];then
+	echo "icmp_ratelimit => ICMP echo requests [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange If the icmp_echo_ignore_all parameter is enabled, the kernel ignores all the ICMP echo
+		requests sent to it."
+	fi
+	printf "Do you want to change value of icmp_ratelimit paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/icmp_echo_ignore_all`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.icmp_echo_ignore_all=$value
+			echo "$green net.icmp_echo_ignore_all paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == igmp_max_membership ];then
+	echo "icmp_ratelimit => Maximum number of multicast groups [For More Info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange The igmp_max_membership parameter is the maximum number of multicast groups we
+		can subscribe to."
+	fi
+	printf "Do you want to change value of icmp_ratelimit paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/igmp_max_membership`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.igmp_max_membership=$value
+			echo "$green net.igmp_max_membership paramater changed [ OK ]"
 		else
 			echo "$orange Please Enter Valid Number"
 		fi
