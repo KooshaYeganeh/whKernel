@@ -1522,7 +1522,7 @@ if [ "$parameter" == icmp_ratemask ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/net/icmp_ratemask`
+		current_parameter=`cat /proc/sys/net/ipv4/icmp_ratemask`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1554,7 +1554,7 @@ if [ "$parameter" == icmp_ratelimit ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/net/icmp_ratelimit`
+		current_parameter=`cat /proc/sys/net/ipv4/icmp_ratelimit`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1583,7 +1583,7 @@ if [ "$parameter" == icmp_ignore_bogus_error_responses ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/net/icmp_ignore_bogus_error_responses`
+		current_parameter=`cat /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1614,7 +1614,7 @@ if [ "$parameter" == icmp_echo_ignore_broadcasts ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/net/icmp_echo_ignore_broadcasts`
+		current_parameter=`cat /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1643,7 +1643,7 @@ if [ "$parameter" == icmp_echo_ignore_all ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/net/icmp_echo_ignore_all`
+		current_parameter=`cat /proc/sys/net/ipv4/icmp_echo_ignore_all`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
@@ -1671,7 +1671,7 @@ if [ "$parameter" == igmp_max_membership ];then
 	read response
 
 	if [ "$response" == y ];then
-		current_parameter=`cat /proc/sys/net/igmp_max_membership`
+		current_parameter=`cat /proc/sys/net/ipv4/igmp_max_membership`
 		echo "current value is $current_parameter"
 		printf "Enter value you want:"
 		read value
