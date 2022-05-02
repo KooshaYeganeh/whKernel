@@ -1,4 +1,7 @@
 # Kernel?
+
+![whkernel](./whkernel.jpg "whkernel image")
+
 what's Going on in Linux Kernel
 
 # INFO
