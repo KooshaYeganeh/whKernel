@@ -1527,8 +1527,8 @@ if [ "$parameter" == icmp_ratemask ];then
 		printf "Enter value you want:"
 		read value
 		if [ "$value" ];then
-			sudo sysctl -w net.icmp_ratemask=$value
-			echo "$green net.icmp_ratemask paramater changed [ OK ]"
+			sudo sysctl -w net.ipv4.icmp_ratemask=$value
+			echo "$green net.ipv4.icmp_ratemask paramater changed [ OK ]"
 		else
 			echo "$orange Please Enter Valid Number"
 		fi
@@ -1559,8 +1559,8 @@ if [ "$parameter" == icmp_ratelimit ];then
 		printf "Enter value you want:"
 		read value
 		if [ "$value" ];then
-			sudo sysctl -w net.icmp_ratelimit=$value
-			echo "$green net.icmp_ratelimit paramater changed [ OK ]"
+			sudo sysctl -w net.ipv4.icmp_ratelimit=$value
+			echo "$green net.ipv4.icmp_ratelimit paramater changed [ OK ]"
 		else
 			echo "$orange Please Enter Valid Number"
 		fi
@@ -1588,8 +1588,8 @@ if [ "$parameter" == icmp_ignore_bogus_error_responses ];then
 		printf "Enter value you want:"
 		read value
 		if [ "$value" ];then
-			sudo sysctl -w net.icmp_ignore_bogus_error_responses=$value
-			echo "$green net.icmp_ignore_bogus_error_responses paramater changed [ OK ]"
+			sudo sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=$value
+			echo "$green net.ipv4.icmp_ignore_bogus_error_responses paramater changed [ OK ]"
 		else
 			echo "$orange Please Enter Valid Number"
 		fi
@@ -1619,8 +1619,8 @@ if [ "$parameter" == icmp_echo_ignore_broadcasts ];then
 		printf "Enter value you want:"
 		read value
 		if [ "$value" ];then
-			sudo sysctl -w net.icmp_echo_ignore_broadcasts=$value
-			echo "$green net.icmp_echo_ignore_broadcasts paramater changed [ OK ]"
+			sudo sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=$value
+			echo "$green net.ipv4.icmp_echo_ignore_broadcasts paramater changed [ OK ]"
 		else
 			echo "$orange Please Enter Valid Number"
 		fi
@@ -1648,8 +1648,8 @@ if [ "$parameter" == icmp_echo_ignore_all ];then
 		printf "Enter value you want:"
 		read value
 		if [ "$value" ];then
-			sudo sysctl -w net.icmp_echo_ignore_all=$value
-			echo "$green net.icmp_echo_ignore_all paramater changed [ OK ]"
+			sudo sysctl -w net.ipv4.icmp_echo_ignore_all=$value
+			echo "$green net.ipv4.icmp_echo_ignore_all paramater changed [ OK ]"
 		else
 			echo "$orange Please Enter Valid Number"
 		fi
@@ -1676,8 +1676,8 @@ if [ "$parameter" == igmp_max_membership ];then
 		printf "Enter value you want:"
 		read value
 		if [ "$value" ];then
-			sudo sysctl -w net.igmp_max_membership=$value
-			echo "$green net.igmp_max_membership paramater changed [ OK ]"
+			sudo sysctl -w net.ipv4.igmp_max_membership=$value
+			echo "$green net.ipv4.igmp_max_membership paramater changed [ OK ]"
 		else
 			echo "$orange Please Enter Valid Number"
 		fi
