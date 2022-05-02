@@ -1688,4 +1688,309 @@ if [ "$parameter" == igmp_max_membership ];then
 	fi
 fi
 
+## NEIGHBOR
+#Sysctl Prefix: net.ipv4.neigh.interface
+#/proc Prefix: /proc/sys/net/neigh/interface
+
+
+if [ "$parameter" == locktime ];then
+	echo "icmp_ratelimit => Time before replacing an old ARP entry "
+	printf "Do you want to change value of locktime paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/locktime`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.locktime=$value
+			echo "$green net.locktime paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == proxy_delay ];then
+	echo "proxy_delay => Maximum time before answering an ARP request"
+	printf "Do you want to change value of proxy_delay paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/proxy_delay`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.proxy_delay=$value
+			echo "$green net.proxy_delay paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+
+if [ "$parameter" == anycast_delay ];then
+	echo "anycast_delay => Maximum delay for neighbor solicitation messages"
+	printf "Do you want to change value of anycast_delay paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/anycast_delay`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.anycast_delay=$value
+			echo "$green net.anycast_delay paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == proxy_qlen ];then
+	echo "proxy_qlen => Maximum queue length of delayed proxy ARP"
+	printf "Do you want to change value of proxy_qlen paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/proxy_qlen`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.proxy_qlen=$value
+			echo "$green net.proxy_qlen paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == unres_qlen ];then
+	echo "unres_qlen => Maximum queue length for pending ARP request"
+	printf "Do you want to change value of unres_qlen paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/unres_qlen`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.unres_qlen=$value
+			echo "$green net.unres_qlen paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == gc_stale_time ];then
+	echo "gc_stale_time => Time before a check for stale ARP entries"
+	printf "Do you want to change value of gc_stale_time paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/gc_stale_time`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.gc_stale_time=$value
+			echo "$green net.gc_stale_time paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == delay_first_probe_time ];then
+	echo "delay_first_probe_time => Delay for first probe if neighbor is reachable"
+	printf "Do you want to change value of delay_first_probe_time paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/delay_first_probe_time`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.delay_first_probe_time=$value
+			echo "$green net.delay_first_probe_time paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == base_reachable_time ];then
+	echo "base_reachable_time => Validity period of an entry once a neighbor has been found. Default is 30 seconds."
+	printf "Do you want to change value of base_reachable_time paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/base_reachable_time`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.base_reachable_time=$value
+			echo "$green net.base_reachable_time paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+
+if [ "$parameter" == retrans_time ];then
+	echo "retrans_time => Time between neighbor solicitation retransmits"
+	printf "Do you want to change value of retrans_time paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/retrans_time`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.retrans_time=$value
+			echo "$green net.retrans_time paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == app_solicit ];then
+	echo "app_solicit => Number of requests to send to user-level ARP daemon"
+	printf "Do you want to change value of app_solicit paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/app_solicit`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.app_solicit=$value
+			echo "$green net.app_solicit paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == ucast_solicit ];then
+	echo "ucast_solicit => Maximum number of retries for unicast solicitation"
+	printf "Do you want to change value of ucast_solicit paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/ucast_solicit`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.ucast_solicit=$value
+			echo "$green net.ucast_solicit paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == mcast_solicit ];then
+	echo "mcast_solicit => Maximum number of retries for multicast solicitation"
+	printf "Do you want to change value of mcast_solicit paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/neigh/enp1s0/mcast_solicit`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.neigh.enp1s0.mcast_solicit=$value
+			echo "$green net.mcast_solicit paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
 
