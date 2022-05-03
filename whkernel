@@ -1994,3 +1994,449 @@ if [ "$parameter" == mcast_solicit ];then
 	fi
 fi
 
+
+
+
+
+
+
+
+
+
+# CONFIG
+# Sysctl Prefix: net.ipv4.conf.interfaceface
+
+
+
+if [ "$parameter" == proxy_arp ];then
+	echo "proxy_arp => Responds to ARP requests if enabled "
+	printf "Do you want to change value of proxy_arp paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/proxy_arp`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.proxy_arp=$value
+			echo "$green net.proxy_arp paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == rp_filter ];then
+	echo "rp_filter => Source validation is required if enabled "
+	printf "Do you want to change value of rp_filter paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/rp_filter`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.rp_filter=$value
+			echo "$green net.rp_filter paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == bootp_relay ];then
+	echo "bootp_relay => Accepts packets with 0.x.y.z addresses "
+	printf "Do you want to change value of bootp_relay paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/bootp_relay`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.bootp_relay=$value
+			echo "$green net.bootp_relay paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == accept_source_route ];then
+	echo "accept_source_route => Accepts set of IP addresses to visit on way"
+	printf "Do you want to change value of accept_source_route paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/accept_source_route`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.accept_source_route=$value
+			echo "$green net.accept_source_route paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+
+if [ "$parameter" == send_redirects ];then
+	echo "send_redirects => Sends ICMP redirects [ for more info press i ]"
+	read info
+	if [ "$info" == i ];then
+		echo "$orange The send_redirects parameter determines whether such redirects are sent."
+	fi
+
+	printf "Do you want to change value of send_redirects paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/send_redirects`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.send_redirects=$value
+			echo "$green net.send_redirects paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == shared_media ];then
+	echo "shared_media => Different subnet communication [ For more Info press i ] "
+	read info
+	if [ "" == "" ];then
+		echo "$orange The shared_media parameter allows the kernel to assume that different subnets on this
+		device can communicate directly."
+	fi
+	printf "Do you want to change value of shared_media paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/shared_media`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.shared_media=$value
+			echo "$green net.shared_media paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == secure_redirects ];then
+	echo "secure_redirects => Packet resend using secure interface [ for more Info press i]"
+	read info
+	if [ "$info" == i ];then
+		echo "The secure_redirects parameter accepts ICMP redirect messages only for a gateway
+		listed in the default gateway list."
+	fi
+	printf "Do you want to change value of secure_redirects paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/secure_redirects`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.secure_redirects=$value
+			echo "$green net.secure_redirects paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+if [ "$parameter" == accept_redirects ];then
+	echo "accept_redirects => Packet resend on same interface on an ICMP redirect [ for more Info press i]"
+	printf "Do you want to change value of accept_redirects paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/accept_redirects`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.accept_redirects=$value
+			echo "$green net.accept_redirects paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == mc_forwarding ];then
+	echo "mc_forwarding => Packet resend using secure interface [ for more Info press i]"
+	read info
+	if [ "$info" == i ];then
+		echo " $orange The mc_forwarding parameter enables or disables multicast forwarding on this
+		interface."
+	fi
+	printf "Do you want to change value of mc_forwarding paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/mc_forwarding`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.mc_forwarding=$value
+			echo "$green net.mc_forwarding paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == forwarding ];then
+	echo "forwarding => IP forwarding"
+	printf "Do you want to change value of forwarding paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/conf/enp1s0/forwarding`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.conf.enp1s0.forwarding=$value
+			echo "$green net.forwarding paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+# Routing
+# Sysctl Prefix: net.ipv4.route
+# /proc Prefix: /proc/sys/net/route/
+
+
+if [ "$parameter" == error_burst ];then
+	echo "error_burst => Time before logging a warning message"
+	printf "Do you want to change value of error_burst paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/route/error_burst`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.route.error_burst.error_burst=$value
+			echo "$green net.error_burst paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+
+if [ "$parameter" == error_cost ];then
+	echo "error_cost => Cost factor for logging a warning message"
+	printf "Do you want to change value of error_cost paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/route/error_cost`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.route.error_cost.error_cost=$value
+			echo "$green net.error_cost paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+
+if [ "$parameter" == max_size ];then
+	echo "max_size => Maximum size of routing cache"
+	printf "Do you want to change value of max_size paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/route/max_size`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.route.max_size.max_size=$value
+			echo "$green net.max_size paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+if [ "$parameter" == max_size ];then
+	echo "max_size => Maximum size of routing cache"
+	printf "Do you want to change value of max_size paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/route/max_size`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.route.max_size.max_size=$value
+			echo "$green net.max_size paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+
+if [ "$parameter" == max_delay ];then
+	echo "max_delay => Maximum delay in seconds for flushing routing cache"
+	printf "Do you want to change value of max_delay paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/route/max_delay`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.route.max_delay.max_delay=$value
+			echo "$green net.max_delay paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
+if [ "$parameter" == min_delay ];then
+	echo "min_delay => Minimum delay in seconds for flushing routing cache"
+	printf "Do you want to change value of min_delay paramater?(y/n)"
+	read response
+
+	if [ "$response" == y ];then
+		current_parameter=`cat /proc/sys/net/ipv4/route/min_delay`
+		echo "current value is $current_parameter"
+		printf "Enter value you want:"
+		read value
+		if [ "$value" ];then
+			sudo sysctl -w net.ipv4.route.min_delay.min_delay=$value
+			echo "$green net.min_delay paramater changed [ OK ]"
+		else
+			echo "$orange Please Enter Valid Number"
+		fi
+	elif [ "$response" == n ];then
+		echo "$blue You Dont want to change The value"
+	else
+		echo "$red Please Enter valid Value!!!"
+	fi
+fi
+
+
+
