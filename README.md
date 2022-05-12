@@ -34,5 +34,5 @@ cd /opt && sudo rm main.zip && sudo rm -rf what_is_Kernel-main && sudo rm /usr/b
 - [×] NEIGHBOR
 - [×] CONFIG
 - [×] Routing
-- [ ] TCP
-- [ ] IP fragmentation
+- [×] TCP
+- [×] IP fragmentation
