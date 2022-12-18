@@ -4,7 +4,7 @@
 
 what's Going on in Linux Kernel
 
-# INFO
+## INFO
 
 with this script:
 
@@ -12,19 +12,23 @@ with this script:
 2- You can change Parameters of Kernel
 
 
-# Install 
+## Install 
 
 just Run install
 
-$ ./install
+
+```
+./install
+```
 
 
 
 
-# Uninstall 
+## Uninstall 
 
+```
 cd /opt && sudo rm main.zip && sudo rm -rf what_is_Kernel-main && sudo rm /usr/bin/whKernel
-
+```
 
 
 ## TODO
