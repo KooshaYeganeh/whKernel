@@ -16,9 +16,23 @@ with this script:
 
 just Run install
 
-
 ```
-./install
+cd /opt 
+```
+```
+wget https://github.com/kooshakoosha/what_is_Kernel/archive/refs/heads/main.zip 
+```
+```
+unzip main.zip
+```
+```
+cd what_is_Kernel-main
+```
+```
+sudo cp whKernel /usr/bin
+```
+```
+cd
 ```
 
 
