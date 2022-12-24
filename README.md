@@ -26,7 +26,7 @@ wget https://github.com/kooshakoosha/what_is_Kernel/archive/refs/heads/main.zip
 unzip main.zip
 ```
 ```
-cd what_is_Kernel-main
+cd whKernel-main/
 ```
 ```
 sudo cp whKernel /usr/bin
