@@ -17,7 +17,7 @@ with this script:
 just Run install
 
 ```
-cd /opt 
+cd /tmp
 ```
 ```
 wget https://github.com/kooshakoosha/what_is_Kernel/archive/refs/heads/main.zip 
@@ -29,10 +29,7 @@ unzip main.zip
 cd whKernel-main/
 ```
 ```
-sudo cp whKernel /usr/bin
-```
-```
-cd
+sudo cp whKernel /usr/bin && cd
 ```
 
 
@@ -41,16 +38,6 @@ cd
 ## Uninstall 
 
 ```
-cd /opt && sudo rm main.zip && sudo rm -rf what_is_Kernel-main && sudo rm /usr/bin/whKernel
+sudo rm /usr/bin/whKernel
 ```
 
-
-## TODO
-
-- [×] Net core
-- [×] ICMP
-- [×] NEIGHBOR
-- [×] CONFIG
-- [×] Routing
-- [×] TCP
-- [×] IP fragmentation
