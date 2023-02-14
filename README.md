@@ -17,19 +17,7 @@ with this script:
 just Run install
 
 ```
-cd /tmp
-```
-```
-wget https://github.com/kooshakoosha/what_is_Kernel/archive/refs/heads/main.zip 
-```
-```
-unzip main.zip
-```
-```
-cd whKernel-main/
-```
-```
-sudo cp whKernel /usr/bin && cd
+cd /tmp && wget https://github.com/kooshakoosha/what_is_Kernel/archive/refs/heads/main.zip && unzip main.zip && cd whKernel-main && sudo cp whKernel /usr/bin && cd
 ```
 
 
